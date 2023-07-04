@@ -1,11 +1,13 @@
+import { Heading } from '@chakra-ui/react';
+import { useSelector } from 'react-redux';
 import "./App.css";
-
 function App() {
+  const {name}=useSelector((state)=>state);
+console.log(name);
   return (
     <div className="App">
-      
-      <h1>Furniture Store React Project</h1>
-          </div>
+    <Heading> {name} React Project</Heading>
+    </div>
   );
 }
 
