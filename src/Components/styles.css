@@ -1,0 +1,17 @@
+.nav-center{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.nav-links,.cart,.nav-header{
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    align-items: center;
+    align-content: center;
+}
+
+
+
+
