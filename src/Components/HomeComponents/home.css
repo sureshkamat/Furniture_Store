@@ -31,3 +31,33 @@
 img{
     margin-left: 50px;
 }
+
+
+
+
+
+.moving-text {
+    animation: move-text 30s linear infinite;
+  }
+  
+  @keyframes move-text {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(10%);
+    }
+  }
+  
+  .moving-textrtl {
+    animation: move-textrtl 30s linear infinite;
+  }
+  
+  @keyframes move-textrtl {
+    from {
+      transform: translateX(10%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }

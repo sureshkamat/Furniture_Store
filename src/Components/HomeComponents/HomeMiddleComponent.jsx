@@ -17,7 +17,7 @@ const Headers = () => {
             </section>
             <img src={HomeImg} alt="" />
         </main>
-     );
+    );
 }
- 
+
 export default Headers;

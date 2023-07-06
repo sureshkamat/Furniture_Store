@@ -1,3 +1,4 @@
+import { FaCcMastercard, FaCcVisa, FaFacebook, FaLinkedin, FaTwitterSquare, FaYoutube } from 'react-icons/fa';
 import "./styles.css";
 const Footer = () => {
     return (
@@ -18,17 +19,16 @@ const Footer = () => {
                 <div>
                     <p>@ 2021 Musdect All Right Reserved</p>
                 </div>
-                <div style={{display:"flex", gap:"10px"}}>
-                    <p>facebook logo</p>
-                    <p>LinkedIn Logo</p>
-                    <p>Youtube Logo</p>
-                    <p>Twitter Logo</p>
+                <div style={{display:"flex", gap:"10px",alignItems:"center"}}>
+                    <FaFacebook/>
+                    <FaLinkedin/>
+                    <FaYoutube/>
+                    <FaTwitterSquare/>
                 </div>
-                <div style={{display:"flex", gap:"5px"}}>
+                <div style={{display:"flex", gap:"5px",alignItems:"center"}}>
                     <p>Accepted Payment Methods </p>
-                    <p>VISA</p>
-                    <p>MasterCard</p>
-                    <p>Rupay</p>
+                    <FaCcVisa/>
+                    <FaCcMastercard/>
                 </div>
             </div>
         </div>

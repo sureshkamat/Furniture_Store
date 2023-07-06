@@ -1,0 +1,3 @@
+export const FETCHLOADING="FETCHLOADING"
+export const FETCHDATA="FETCHDATA"
+export const FETCHERROR="FETCHERROR"

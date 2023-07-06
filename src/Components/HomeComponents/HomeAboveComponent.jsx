@@ -1,8 +1,9 @@
+import "./home.css"
 const HomeAboveComponent=()=>{
     return (
         <>
-        <div style={{display:"flex",justifyContent:"space-between",padding:"10px 20px"}}>
-    <h1>Office Chairs</h1>
+        <div className="moving-text " style={{display:"flex",justifyContent:"space-between",padding:"10px 20px"}}>
+        <h1>Office Chairs</h1>
     <h1>Dining Chairs</h1>
     <h1>Cocktail Chairs</h1>
     <h1>Living Chairs</h1>
@@ -11,7 +12,7 @@ const HomeAboveComponent=()=>{
     <h1>Office Desks</h1>
     <h1>Wall Lamps</h1>
 </div>
-<div style={{display:"flex",justifyContent:"space-between",padding:"20px"}}>
+<div className="moving-textrtl" style={{display:"flex",justifyContent:"space-between",padding:"20px"}}>
     <h1>Table Lamps</h1>
     <h1>Living Sofas</h1>
     <h1>Sofa Beds</h1>
