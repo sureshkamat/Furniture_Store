@@ -1,6 +1,8 @@
 import { CloseIcon } from "@chakra-ui/icons";
-import { Button, Flex, Heading, Image, Text, Container, Box, HStack, Input } from "@chakra-ui/react";
+import { Button, Flex, Heading, Image, Text, Container, Box, HStack, Input, Progress} from "@chakra-ui/react";
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
+
 
 export const Cart = () => {
     const [cartData, setCartData] = useState([]);
@@ -59,12 +61,30 @@ export const Cart = () => {
     };
 
     return (
-        <Container maxW='1000px'>
+        <Container maxW='1100px' >
             <Flex justifyContent='space-between'><Heading as='h1' textAlign='center' mt='6'>Your Orders</Heading>
             <Text textAlign='center' mb='4' mt='50px'>{total} Product Added</Text></Flex>
-            <Flex direction='column'>
+            <Box
+                overflowY='auto'
+                height='480px'
+                paddingRight='10px'
+                marginRight='-10px'
+                css={{
+                    '&::-webkit-scrollbar': {
+                      width: '4px',
+                    },
+                    '&::-webkit-scrollbar-track': {
+                      
+                    },
+                    '&::-webkit-scrollbar-thumb': {
+                      background: '#FF8D18',
+                      borderRadius: '8px',
+                    },
+                  }}
+                
+            >
                 {cartData.map((ele) => (
-                    <Flex justifyContent='space-between' alignItems='center' key={ele.id} mb='4' p='4' bg='gray.100' position='relative'>
+                    <Flex justifyContent='space-between' alignItems='center' key={ele.id} mb='4' p='4' bg='white' position='relative' borderRadius='20px'>
                         <Button
                             size='sm'
                             onClick={() => deleteItem(ele.id)}
@@ -79,7 +99,7 @@ export const Cart = () => {
                             src={ele.image}
                             alt={ele.name}
                         />
-                        <Flex flex='1' direction='column' ml='4'>
+                        <Flex flex='1' direction='column'ml='4'>
                             <Heading as='h3' size='lg' mb='2'>{ele.category}</Heading>
                             <Text>Code: {ele.code}</Text>
                             <Text>Dimensions {ele.dimensions}</Text>
@@ -93,13 +113,18 @@ export const Cart = () => {
                         <Heading as='h3' size='lg' width='150px' mt='80px'>{ele.price * (quantities[ele.id] || 0)}$</Heading>
                     </Flex>
                 ))}
-            </Flex>
-            {totalPrice > 0 && (
-                <Flex justifyContent='flex-end' alignItems='center' mt='4'>
-                    <Text fontSize='lg' mr='2'>Total Price:</Text>
-                    <Text fontSize='lg' fontWeight='bold'>${totalPrice.toFixed(2)}</Text>
-                </Flex>
-            )}
+            </Box>
+            <Box display='flex'   justifyContent='space-between' mt='25px'>
+                    <Text >2/3</Text>
+                    <Progress value={67}  colorScheme='orange' w='550px' size='xs' mt='20px' />
+                    <Link to={`/Info/${totalPrice}`} > <Button mb='20px'  h="60px"
+                                w='150px' borderTopLeftRadius='20px' borderBottomRightRadius='20px' backgroundColor='#FFCC01' color='white'>
+                                    Next
+                          </Button></Link>
+                    
+                </Box>
+            
+           
         </Container>
     );
 };
