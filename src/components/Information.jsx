@@ -72,15 +72,14 @@ export const Information = () => {
   };
 
   return (
-    <Container maxW="1100px" backgroundColor="#C4C4C4">
-      <Heading as="h1" textAlign="left" mt="6">
+    <Container maxW="1100px" >
+      <Heading as="h1" textAlign="left" mt='-25px' paddingBottom='10px'>
         Your Information
       </Heading>
-
       <form onSubmit={handleSubmit}>
-        <Flex justifyContent="space-between" mt="8" backgroundColor="white" paddingTop="60px" borderRadius="30px">
+        <Flex justifyContent="space-between" backgroundColor="white" paddingTop="60px" borderRadius="30px">
           {/* Left Side */}
-          <Box flex="1" mr="8" gap="8">
+          <Box flex="1" gap="8" ml='50px'>
             <Box mb="40px">
               <Input
                 id="lastName"

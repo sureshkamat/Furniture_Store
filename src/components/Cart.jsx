@@ -1,5 +1,5 @@
 import { CloseIcon } from "@chakra-ui/icons";
-import { Button, Flex, Heading, Image, Text, Container, Box, HStack, Input, Progress} from "@chakra-ui/react";
+import { Button, Flex, Heading, Image, Text, Container, Box, HStack, Input, Progress } from "@chakra-ui/react";
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 
@@ -13,7 +13,7 @@ export const Cart = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://fakestoreapi.com/products');
+                const response = await fetch('http://localhost:8080/cart');
                 const data = await response.json();
                 setCartData(data);
 
@@ -51,7 +51,7 @@ export const Cart = () => {
 
     const deleteItem = async (id) => {
         try {
-            await fetch(`https://fakestoreapi.com/products/${id}`, {
+            await fetch(`http://localhost:8080/cart/${id}`, {
                 method: 'DELETE'
             });
             setCartData((prevCartData) => prevCartData.filter((item) => item.id !== id));
@@ -62,8 +62,8 @@ export const Cart = () => {
 
     return (
         <Container maxW='1100px' >
-            <Flex justifyContent='space-between'><Heading as='h1' textAlign='center' mt='6'>Your Orders</Heading>
-            <Text textAlign='center' mb='4' mt='50px'>{total} Product Added</Text></Flex>
+            <Flex justifyContent='space-between'><Heading as='h1' textAlign='center' mt='-25px' paddingBottom='10px'>Your Orders</Heading>
+                <Text textAlign='center' mb='4'>{total} Product Added</Text></Flex>
             <Box
                 overflowY='auto'
                 height='480px'
@@ -71,17 +71,17 @@ export const Cart = () => {
                 marginRight='-10px'
                 css={{
                     '&::-webkit-scrollbar': {
-                      width: '4px',
+                        width: '4px',
                     },
                     '&::-webkit-scrollbar-track': {
-                      
+
                     },
                     '&::-webkit-scrollbar-thumb': {
-                      background: '#FF8D18',
-                      borderRadius: '8px',
+                        background: '#FF8D18',
+                        borderRadius: '8px',
                     },
-                  }}
-                
+                }}
+
             >
                 {cartData.map((ele) => (
                     <Flex justifyContent='space-between' alignItems='center' key={ele.id} mb='4' p='4' bg='white' position='relative' borderRadius='20px'>
@@ -91,7 +91,7 @@ export const Cart = () => {
                             position='absolute'
                             top='1'
                             right='1'
-                        ><CloseIcon/>
+                        ><CloseIcon />
                         </Button>
                         <Image
                             boxSize={{ sm: '120px', md: '200px' }}
@@ -99,32 +99,32 @@ export const Cart = () => {
                             src={ele.image}
                             alt={ele.name}
                         />
-                        <Flex flex='1' direction='column'ml='4'>
+                        <Flex flex='1' direction='column' ml='4'>
                             <Heading as='h3' size='lg' mb='2'>{ele.category}</Heading>
                             <Text>Code: {ele.code}</Text>
                             <Text>Dimensions {ele.dimensions}</Text>
                             <Text>Color: {ele.color}</Text>
                         </Flex>
                         <HStack maxW='140px' alignItems='center'>
-                            <Button size='sm' onClick={() => handleQuantityDecrease(ele.id)} isDisabled={quantities[ele.id]===1}>-</Button>
+                            <Button size='sm' onClick={() => handleQuantityDecrease(ele.id)} isDisabled={quantities[ele.id] === 1}>-</Button>
                             <Input value={quantities[ele.id] || 0} readOnly w='16' textAlign='center' />
-                            <Button size='sm' onClick={() => handleQuantityIncrease(ele.id)} isDisabled={quantities[ele.id]===6}>+</Button>
+                            <Button size='sm' onClick={() => handleQuantityIncrease(ele.id)} isDisabled={quantities[ele.id] === 6}>+</Button>
                         </HStack>
                         <Heading as='h3' size='lg' width='150px' mt='80px'>{ele.price * (quantities[ele.id] || 0)}$</Heading>
                     </Flex>
                 ))}
             </Box>
-            <Box display='flex'   justifyContent='space-between' mt='25px'>
-                    <Text >1/3</Text>
-                    <Progress value={33}  colorScheme='orange' w='550px' size='xs' mt='20px' />
-                    <Link to={`/Info/${totalPrice}`} > <Button mb='20px'  h="60px"
-                                w='150px' borderTopLeftRadius='20px' borderBottomRightRadius='20px' backgroundColor='#FFCC01' color='white'>
-                                    Next
-                          </Button></Link>
-                    
-                </Box>
-            
-           
+            <Box display='flex' justifyContent='space-between' mt='25px'>
+                <Text >1/3</Text>
+                <Progress value={33} colorScheme='orange' w='550px' size='xs' mt='20px' />
+                <Link to={`/Info/${totalPrice}`} > <Button mb='20px' h="60px"
+                    w='150px' borderTopLeftRadius='20px' borderBottomRightRadius='20px' backgroundColor='#FFCC01' color='white'>
+                    Next
+                </Button></Link>
+
+            </Box>
+
+
         </Container>
     );
 };

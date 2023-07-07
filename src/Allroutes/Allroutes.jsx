@@ -14,7 +14,7 @@ const AllRoutes=()=>{
         <Route path="/product/:id" element={<h1>Single Product</h1>}/>
         <Route path="/login" element={<h1>Login</h1>}/>
         <Route path="/signup" element={<h1>SignUp</h1>}/>
-        <Route path="/cart" element={Auth?<Cart />:<h1>Login Page</h1>} />
+        <Route path="/cart" element={<Cart/>} />
         <Route path="/Info/:totalPrice" element={<Information />}> </Route>
         <Route path="/Delivery/:discountedPrice" element={<Delivery />}> </Route>
     </Routes>
