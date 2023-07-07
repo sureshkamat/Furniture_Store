@@ -7,6 +7,27 @@
   "Users": [
     {
       "id": 1
+    },
+    {
+      "email": "yashkumarpal987@gmail.com",
+      "password": "123",
+      "firstName": "yash",
+      "lastName": "pal",
+      "id": 2
+    },
+    {
+      "email": "yashkumarpal",
+      "password": "123",
+      "firstName": "anu",
+      "lastName": "pal",
+      "id": 3
+    },
+    {
+      "email": "shreedharmore@gmail.com",
+      "password": "12345",
+      "firstName": "shreedhar",
+      "lastName": "more",
+      "id": 4
     }
   ]
 }
