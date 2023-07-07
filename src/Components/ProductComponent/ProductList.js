@@ -19,6 +19,7 @@ const ProductList = ({products}) => {
             window.alert("Added");
         })
         .catch((err)=>{
+            window.alert("Already Added to Cart")
             console.log(err);
         })
 
