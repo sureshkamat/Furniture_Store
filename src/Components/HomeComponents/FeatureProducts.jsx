@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import { getData, getError, getLoading } from '../../Redux/action';
+import Loading from '../Loading';
 import Product from './Products';
 const FeaturedProducts = () => {
    const dispatch=useDispatch(); 
@@ -27,7 +28,7 @@ getfeatureData();
 },[])
 
     if (isLoading) {
-        return <h1>Loading....</h1>;
+        return <div className="section" style={{width:"90%",margin:"auto"}}> <Loading /> </div>
     }
     if (isError) {
         return <h1>Error....</h1>;

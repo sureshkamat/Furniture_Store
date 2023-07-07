@@ -7,6 +7,7 @@ import Services from "./Services";
 import docs from "./docs.JPG";
 import map from "./map.JPG";
 export default function Middle(){
+    
     return (
         <><div style={{width:"80%",margin:"auto",marginBottom:"20px"}}>
             <Heading>What's New?</Heading><br></br>

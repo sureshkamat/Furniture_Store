@@ -6,6 +6,7 @@ import logo from "../assets/Logo.JPG";
 
 import "./styles.css";
 const Navbar = () => {
+
     return (
             <div className="nav-center" >
                 <div className="nav-header">
