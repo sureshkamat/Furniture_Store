@@ -1,9 +1,9 @@
-import { FETCHDATA, FETCHERROR, FETCHFURNITURE, FETCHLOADING } from "./actionTypes";
+import { FETCHDATA, FETCHERROR, FETCHFURNITURE, FETCHLOADING, SIGNIN } from "./actionTypes";
 
 const initState={
     isLoading:false,
     isError:false,
-    isAuth:true,
+    isAuth:false,
     data:[],
     furniture:[]
 }
@@ -22,6 +22,10 @@ const reducer=(state=initState,action)=>{
             case FETCHERROR:{
                 return {...state,isError:true}
             }
+            case SIGNIN:{
+                return {...state,isAuth:!state.isAuth}
+            }
+            
         default:
             return state;
     }

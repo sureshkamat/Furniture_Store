@@ -4,9 +4,12 @@ import { Input, Text } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import logo from "../assets/Logo.JPG";
 
+import { useDispatch, useSelector } from 'react-redux';
+import { getSignIn } from '../Redux/action';
 import "./styles.css";
 const Navbar = () => {
-
+const Auth=useSelector((state)=>state.isAuth)
+const dispatch=useDispatch();
     return (
             <div className="nav-center" >
                 <div className="nav-header">
@@ -23,16 +26,13 @@ const Navbar = () => {
                 </div>
                 {/* <div className="nav-links">
                     <Link to="/"><Text fontSize='xl'>Home</Text></Link>
-                    <Link to="/about"><Text fontSize='xl'>About</Text></Link>
                     <Link to="/product"><Text fontSize='xl'>Products</Text></Link>
                 </div> */}
                 <div className="cart">
                 
                 <SearchIcon/><Input variant='flushed' placeholder='Search place ' />
-                <Link to="/login"><Text fontSize='xl'>wishlist</Text></Link>
-                
                 <Link to="/cart"><Text fontSize='xl'>Cart</Text></Link>
-                <Link to="/login"><Text fontSize='xl'>Login</Text></Link>
+            {Auth ? <Text onClick={()=>dispatch(getSignIn())}> LogOut </Text> : <Link to="/login"><Text fontSize='xl'>SignIn</Text></Link>  }
                 </div>
                 
             </div>

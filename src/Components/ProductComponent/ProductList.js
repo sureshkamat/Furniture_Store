@@ -32,7 +32,7 @@ const ProductList = ({products}) => {
         </Link>
         <Center><Text>{product.name}</Text></Center>
     <div>
-        <Center p={5}><Text mr={5}>$ {product.price}</Text>
+        <Center p={5}><Text mr={5}>RS. {product.price}</Text>
         <Button colorScheme='yellow' onClick={()=>addtoCart(product)}>Add to Cart</Button> </Center>
     </div>
 </div>;
