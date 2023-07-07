@@ -14,8 +14,8 @@ const AllRoutes=()=>{
         <Route path="/" element={<Homepage />}/>
         <Route path="/product" element={<ProductData />}/>
         <Route path="/product/:id" element={<h1>Single Product</h1>}/>
-        <Route path="/login" element={<h1>Login</h1>}/>
-        <Route path="/signup" element={<h1>SignUp</h1>}/>
+        {/* <Route path="/login" element={<SignIn />}/>
+        <Route path="/signup" element={<SignUp />}/> */}
         <Route path="/cart" element={Auth?<Cart />:<h1>Login Page</h1>} />
         <Route path="/Info/:totalPrice" element={<Information />}> </Route>
         <Route path="/Delivery/:discountedPrice" element={<Delivery />}> </Route>
@@ -23,3 +23,4 @@ const AllRoutes=()=>{
     </Routes>
 }
 export { AllRoutes }
+

@@ -1,6 +1,6 @@
 import { CloseIcon } from "@chakra-ui/icons";
-import { Button, Flex, Heading, Image, Text, Container, Box, HStack, Input, Progress} from "@chakra-ui/react";
-import React, { useState, useEffect } from 'react';
+import { Box, Button, Container, Flex, HStack, Heading, Image, Input, Progress, Text } from "@chakra-ui/react";
+import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 
 
@@ -13,7 +13,7 @@ export const Cart = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://fakestoreapi.com/products');
+                const response = await fetch('http://localhost:8080/Cart');
                 const data = await response.json();
                 setCartData(data);
 
@@ -51,7 +51,7 @@ export const Cart = () => {
 
     const deleteItem = async (id) => {
         try {
-            await fetch(`https://fakestoreapi.com/products/${id}`, {
+            await fetch(`http://localhost:8080/Carts/${id}`, {
                 method: 'DELETE'
             });
             setCartData((prevCartData) => prevCartData.filter((item) => item.id !== id));
