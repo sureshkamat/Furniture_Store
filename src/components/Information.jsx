@@ -170,7 +170,7 @@ export const Information = () => {
             <Box>
               <Flex mt="auto" mb="4" justifyContent="space-between">
                 <Text fontSize="xl">Total Price</Text>
-                <Text fontWeight="bold" fontSize="3xl">${discountedPrice}</Text>
+                <Text fontWeight="bold" fontSize="3xl">₹ {discountedPrice}</Text>
               </Flex>
             </Box>
           </Box>

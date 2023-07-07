@@ -204,7 +204,7 @@ export const Delivery = () => {
         </Box>
         <Flex justifyContent="space-evenly" paddingTop="150px">
           <Heading>Total</Heading>
-          <Heading>{discountedPrice}</Heading>
+          <Heading>₹ {discountedPrice}</Heading>
         </Flex>
       </Grid>
       <Box display="flex" justifyContent="space-between" mt="30px">

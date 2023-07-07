@@ -13,7 +13,7 @@ export const Cart = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:8080/cart');
+                const response = await fetch(`http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/cart`);
                 const data = await response.json();
                 setCartData(data);
 
@@ -51,7 +51,7 @@ export const Cart = () => {
 
     const deleteItem = async (id) => {
         try {
-            await fetch(`http://localhost:8080/cart/${id}`, {
+            await fetch(`http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/cart/${id}`, {
                 method: 'DELETE'
             });
             setCartData((prevCartData) => prevCartData.filter((item) => item.id !== id));
@@ -100,17 +100,17 @@ export const Cart = () => {
                             alt={ele.name}
                         />
                         <Flex flex='1' direction='column' ml='4'>
-                            <Heading as='h3' size='lg' mb='2'>{ele.category}</Heading>
-                            <Text>Code: {ele.code}</Text>
-                            <Text>Dimensions {ele.dimensions}</Text>
-                            <Text>Color: {ele.color}</Text>
+                            <Heading as='h3' size='lg' mb='2'>{ele.name}</Heading>
+                            <Text>Company: {ele.company}</Text>
+                            <Text>Category {ele.category}</Text>
+                            <Text>Price: ₹ {ele.price}</Text>
                         </Flex>
                         <HStack maxW='140px' alignItems='center'>
                             <Button size='sm' onClick={() => handleQuantityDecrease(ele.id)} isDisabled={quantities[ele.id] === 1}>-</Button>
                             <Input value={quantities[ele.id] || 0} readOnly w='16' textAlign='center' />
                             <Button size='sm' onClick={() => handleQuantityIncrease(ele.id)} isDisabled={quantities[ele.id] === 6}>+</Button>
                         </HStack>
-                        <Heading as='h3' size='lg' width='150px' mt='80px'>{ele.price * (quantities[ele.id] || 0)}$</Heading>
+                        <Heading as='h3' size='lg' width='150px' mt='80px'>₹ {ele.price * (quantities[ele.id] || 0)}</Heading>
                     </Flex>
                 ))}
             </Box>
