@@ -3,7 +3,7 @@ import { FETCHDATA, FETCHERROR, FETCHFURNITURE, FETCHLOADING } from "./actionTyp
 const initState={
     isLoading:false,
     isError:false,
-    isAuth:false,
+    isAuth:true,
     data:[],
     furniture:[]
 }
