@@ -115,8 +115,8 @@ export const Cart = () => {
                 ))}
             </Box>
             <Box display='flex'   justifyContent='space-between' mt='25px'>
-                    <Text >2/3</Text>
-                    <Progress value={67}  colorScheme='orange' w='550px' size='xs' mt='20px' />
+                    <Text >1/3</Text>
+                    <Progress value={33}  colorScheme='orange' w='550px' size='xs' mt='20px' />
                     <Link to={`/Info/${totalPrice}`} > <Button mb='20px'  h="60px"
                                 w='150px' borderTopLeftRadius='20px' borderBottomRightRadius='20px' backgroundColor='#FFCC01' color='white'>
                                     Next
