@@ -1,6 +1,8 @@
 import { CloseIcon } from "@chakra-ui/icons";
+
 import { Button, Flex, Heading, Image, Text, Container, Box, HStack, Input, Progress } from "@chakra-ui/react";
 import React, { useState, useEffect, useContext } from 'react';
+
 import { Link } from "react-router-dom";
 import DetailsContext from "./DetailsContext";
 
@@ -17,7 +19,9 @@ export const Cart = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
+
                 const response = await fetch(`http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/cart`);
+
                 const data = await response.json();
                 setCartData(data);
 
@@ -55,7 +59,9 @@ export const Cart = () => {
 
     const deleteItem = async (id) => {
         try {
+
             await fetch(`http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/cart/${id}`, {
+
                 method: 'DELETE'
             });
             setCartData((prevCartData) => prevCartData.filter((item) => item.id !== id));
