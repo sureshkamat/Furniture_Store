@@ -29,7 +29,7 @@ export default function SignUp() {
         };
     
         try {
-          const response = await fetch('http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/Users', {
+          const response = await fetch(`http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/Users`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
