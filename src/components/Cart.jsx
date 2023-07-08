@@ -1,7 +1,8 @@
 import { CloseIcon } from "@chakra-ui/icons";
 import { Button, Flex, Heading, Image, Text, Container, Box, HStack, Input, Progress } from "@chakra-ui/react";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from "react-router-dom";
+import DetailsContext from "./DetailsContext";
 
 
 export const Cart = () => {
@@ -9,6 +10,9 @@ export const Cart = () => {
     const [quantities, setQuantities] = useState({});
     const total = cartData.length;
     const totalPrice = cartData.reduce((acc, item) => acc + (item.price * (quantities[item.id] || 0)), 0);
+    const details=useContext(DetailsContext);
+    details.totalPrice=totalPrice;
+    
 
     useEffect(() => {
         const fetchData = async () => {
@@ -117,7 +121,7 @@ export const Cart = () => {
             <Box display='flex' justifyContent='space-between' mt='25px'>
                 <Text >1/3</Text>
                 <Progress value={33} colorScheme='orange' w='550px' size='xs' mt='20px' />
-                <Link to={`/Info/${totalPrice}`} > <Button mb='20px' h="60px"
+                <Link to={`/Info/`} > <Button mb='20px' h="60px"
                     w='150px' borderTopLeftRadius='20px' borderBottomRightRadius='20px' backgroundColor='#FFCC01' color='white'>
                     Next
                 </Button></Link>
