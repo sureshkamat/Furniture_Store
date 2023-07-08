@@ -1,17 +1,16 @@
-import * as React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { useToast } from '@chakra-ui/react';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useToast } from '@chakra-ui/react';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import { Link as RouterLink } from 'react-router-dom';
 
 
 const defaultTheme = createTheme();
@@ -30,7 +29,7 @@ export default function SignUp() {
         };
     
         try {
-          const response = await fetch('http://localhost:8080/Users', {
+          const response = await fetch('http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/Users', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

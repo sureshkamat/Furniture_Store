@@ -32,7 +32,7 @@ export default function SignIn() {
       };
 
     try {
-        const response = await fetch('http://localhost:8080/Users');
+        const response = await fetch('http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/Users');
         if (response.ok) {
           const users = await response.json();
           const userExists = users.some(

@@ -1,4 +1,3 @@
-import React, { useContext, useState } from "react";
 import {
   Box,
   Button,
@@ -9,19 +8,20 @@ import {
   FormLabel,
   Grid,
   Heading,
+  Image,
   Input,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
   Progress,
   Select,
   Text,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
-  ModalFooter,
-  Image,
 } from "@chakra-ui/react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import DetailsContext from "./DetailsContext";
 export const Delivery = () => {
@@ -594,7 +594,7 @@ export const Delivery = () => {
        <Modal isOpen={showPayment} onClose={handleClosePayment}>
         <ModalOverlay />
         <ModalContent textAlign='center'>
-          <ModalHeader textAlign='center'>Payment Successful</ModalHeader>
+          <ModalHeader textAlign='center'>Order Confirmed</ModalHeader>
           <ModalHeader textAlign='center'>Order ID : {randomNumber}</ModalHeader>
           <ModalBody>
             <Image width='300px'src="https://cdn.dribbble.com/users/5804730/screenshots/14516978/media/b0978897e159ccefcd7f6e25e6c4b4ca.gif" alt="Payment Successful" style={{ maxWidth: "100%", height: "auto" }} />
