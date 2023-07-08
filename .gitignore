@@ -26,3 +26,6 @@ results.json
 cypress/videos
 cypress/screenshots
 after_spec_results.json
+
+# Local Netlify folder
+.netlify
