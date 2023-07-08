@@ -7,13 +7,27 @@ const Sort = ({category,setCategory,setCompany,setShipping,shipping}) => {
                 </Heading><br/>
                 <Box ml={10}>
                 <Stack spacing={2} direction='column'>
-                <Checkbox colorScheme='yellow' default><Text onClick={()=>{setCompany("");setCategory("");setShipping(false)}}>All</Text></Checkbox>
+                <RadioGroup defaultValue='1'>
+                    <Stack spacing={5} direction='column'>
+                    <Radio  colorScheme='yellow' value='1'><Text onClick={()=>{setCompany("");setCategory("");setShipping(false)}}>All</Text></Radio>
+                    <Radio   colorScheme='yellow' value='2'><Text onClick={()=>{setCompany("");setCategory("office");setShipping(false)}}>Office Chairs</Text></Radio>
+                    <Radio  colorScheme='yellow' value='3'><Text onClick={()=>{setCompany("");setCategory("living room");setShipping(false)}}> Living Room</Text></Radio>
+                    <Radio   colorScheme='yellow' value='4'><Text onClick={()=>{setCompany("");setCategory("kitchen");setShipping(false)}}> Kitchen</Text ></Radio>
+                    <Radio   colorScheme='yellow' value='5'><Text onClick={()=>{setCompany("");setCategory("bedroom");setShipping(false)}}> Bedroom</Text></Radio>
+                    <Radio   colorScheme='yellow' value='6'><Text onClick={()=>{setCompany("");setCategory("dining");setShipping(false)}}> Dining</Text></Radio>
+                    <Radio   colorScheme='yellow' value='7'><Text onClick={()=>{setCompany("");setCategory("kids");setShipping(false)}}> Kids</Text></Radio>
+                    </Stack>
+                </RadioGroup>
+                
+                
+                {/* <Checkbox colorScheme='yellow' default><Text onClick={()=>{setCompany("");setCategory("");setShipping(false)}}>All</Text></Checkbox>
                     <Checkbox colorScheme='yellow' ><Text onClick={()=>{setCompany("");setCategory("office");setShipping(false)}}>Office Chairs</Text></Checkbox>
                     <Checkbox colorScheme='yellow' ><Text onClick={()=>{setCompany("");setCategory("living room");setShipping(false)}}> Living Room</Text></Checkbox>
                     <Checkbox colorScheme='yellow' ><Text onClick={()=>{setCompany("");setCategory("kitchen");setShipping(false)}}> Kitchen</Text ></Checkbox>
                     <Checkbox colorScheme='yellow' ><Text onClick={()=>{setCompany("");setCategory("bedroom");setShipping(false)}}> Bedroom</Text></Checkbox>
                     <Checkbox colorScheme='yellow' ><Text onClick={()=>{setCompany("");setCategory("dining");setShipping(false)}}> Dining</Text></Checkbox>
                     <Checkbox colorScheme='yellow'  ><Text onClick={()=>{setCompany("");setCategory("kids");setShipping(false)}}> Kids</Text></Checkbox>
+                */}
                 </Stack>
                 </Box>
 
@@ -35,7 +49,7 @@ const Sort = ({category,setCategory,setCompany,setShipping,shipping}) => {
                    Color
                 </Heading><br/>
                 <Box ml={10} mb={10}>
-                <RadioGroup defaultValue='2'>
+                <RadioGroup defaultValue='1'>
                     <Stack spacing={5} direction='row'>
                     <Radio colorScheme='red' bg={'red'} value='1'></Radio>
                     <Radio colorScheme='green' bg={'green'} value='2'></Radio>
