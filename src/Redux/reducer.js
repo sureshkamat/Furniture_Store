@@ -1,11 +1,12 @@
-import { FETCHDATA, FETCHERROR, FETCHFURNITURE, FETCHLOADING, SIGNIN } from "./actionTypes";
+import { FETCHDATA, FETCHERROR, FETCHFURNITURE, FETCHLOADING, SIGNIN, SINGLEDATA } from "./actionTypes";
 
 const initState={
     isLoading:false,
     isError:false,
     isAuth:false,
     data:[],
-    furniture:[]
+    furniture:[],
+    singleData:[]
 }
 
 const reducer=(state=initState,action)=>{
@@ -18,6 +19,9 @@ const reducer=(state=initState,action)=>{
             }
             case FETCHFURNITURE:{
                 return {...state,isLoading:false,furniture:action.payload}
+            }
+            case SINGLEDATA:{
+                return {...state,isLoading:false,singleData:action.payload}
             }
             case FETCHERROR:{
                 return {...state,isError:true}

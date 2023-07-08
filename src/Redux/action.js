@@ -1,4 +1,4 @@
-import { FETCHDATA, FETCHERROR, FETCHFURNITURE, FETCHLOADING, SIGNIN } from "./actionTypes"
+import { FETCHDATA, FETCHERROR, FETCHFURNITURE, FETCHLOADING, SIGNIN, SINGLEDATA } from "./actionTypes"
 
  const getLoading=()=>{
     return {type:FETCHLOADING}
@@ -13,6 +13,9 @@ const getFurniture=(payload)=>{
     return {type:FETCHFURNITURE,payload:payload}
     }
     
+    const getSingleData=(payload)=>{
+        return {type:SINGLEDATA,payload:payload}
+        }    
 
 
  const getError=()=>{
@@ -23,5 +26,5 @@ const getFurniture=(payload)=>{
         return {type:SIGNIN }
         }
     
-export { getData, getError, getFurniture, getLoading, getSignIn }
+export { getData, getError, getFurniture, getLoading, getSignIn, getSingleData }
 

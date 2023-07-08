@@ -1,25 +1,27 @@
 import { Button, Heading } from '@chakra-ui/react';
 import axios from 'axios';
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams, } from "react-router-dom";
 import styled from "styled-components";
+import { getError, getLoading, getSingleData } from '../Redux/action';
 import PageHero from "./ProductComponent/ProductHero";
 import ProductImages from "./ProductImages";
 
 const SingleProductPage = () => {
     const { id } = useParams();
-    const [data,setData]=useState([]);
+    const dispatch=useDispatch();
+    const data=useSelector((state)=>state.singleData);
+    console.log(data);
     let url=`https://course-api.com/react-store-single-product?id=${id}`
     const fetchSingleProduct = async (url) => {
-      // dispatch({ type: GET_SINGLE_PRODUCT_BEGIN });
+      dispatch(getLoading());
       try {
           const response = await axios.get(url);
           const singleProduct = response.data;
-          console.log(singleProduct);
-          setData(singleProduct)
-          // dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: singleProduct });
+          dispatch(getSingleData(singleProduct));
       } catch (error) {
-          // dispatch({ type: GET_SINGLE_PRODUCT_ERROR });
+            dispatch(getError());
       }
   };
 
