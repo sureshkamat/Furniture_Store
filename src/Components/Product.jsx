@@ -23,9 +23,9 @@ const ProductData = () => {
     const dispatch=useDispatch();
     const getData=()=>{
         dispatch(getLoading());
-        let url=`http://localhost:8080/furnitures?_page=${page}&_limit=${limit}`
+        let url=`http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/furnitures?_page=${page}&_limit=${limit}`
         if(orderBy){
-            url=`http://localhost:8080/furnitures?_page=${page}&_limit=${limit}&_sort=${sortBy}&_order=${orderBy}`
+            url=`http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/furnitures?_page=${page}&_limit=${limit}&_sort=${sortBy}&_order=${orderBy}`
         }
         // const params={
         //     comapny:company,
@@ -35,19 +35,19 @@ const ProductData = () => {
         // }
 
         if(category){
-            url=`http://localhost:8080/furnitures?_page=${page}&_limit=${limit}&category_like=${category}`
+            url=`http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/furnitures?_page=${page}&_limit=${limit}&category_like=${category}`
             if(orderBy){
-                url=`http://localhost:8080/furnitures?_page=${page}&_limit=${limit}&category_like=${category}&_sort=${sortBy}&_order=${orderBy}`
+                url=`http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/furnitures?_page=${page}&_limit=${limit}&category_like=${category}&_sort=${sortBy}&_order=${orderBy}`
             }
         }else if(company){
-            url=`http://localhost:8080/furnitures?_page=${page}&_limit=${limit}&company_like=${company}`
+            url=`http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/furnitures?_page=${page}&_limit=${limit}&company_like=${company}`
             if(orderBy){
-                url=`http://localhost:8080/furnitures?_page=${page}&_limit=${limit}&company_like=${company}&_sort=${sortBy}&_order=${orderBy}`
+                url=`http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/furnitures?_page=${page}&_limit=${limit}&company_like=${company}&_sort=${sortBy}&_order=${orderBy}`
             }
         }else if(shipping){
-            url=`http://localhost:8080/furnitures?_page=${page}&_limit=${limit}&shipping_like=true`
+            url=`http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/furnitures?_page=${page}&_limit=${limit}&shipping_like=true`
             if(orderBy){
-                url=`http://localhost:8080/furnitures?_page=${page}&_limit=${limit}&shipping_like=true&_sort=${sortBy}&_order=${orderBy}`
+                url=`http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/furnitures?_page=${page}&_limit=${limit}&shipping_like=true&_sort=${sortBy}&_order=${orderBy}`
             }
         }
         

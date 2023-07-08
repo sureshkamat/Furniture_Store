@@ -14,7 +14,7 @@ const ProductList = ({products}) => {
         );
     }
     const addtoCart=(product)=>{
-        axios.post(`http://localhost:8080/cart`,product)
+        axios.post(`http://localhost:${process.env.REACT_APP_JSON_SERVER_PORT}/cart`,product)
         .then((res)=>{
             window.alert("Added");
         })
