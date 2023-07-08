@@ -1,72 +1,136 @@
+import { Button, Heading } from '@chakra-ui/react';
+import axios from 'axios';
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import styles from "./ProductDetails.module.css";
+import { Link, useParams, } from "react-router-dom";
+import styled from "styled-components";
+import PageHero from "./ProductComponent/ProductHero";
+import ProductImages from "./ProductImages";
 
-const ProductDetails = () => {
-  const {id} = useParams();
-  const [product, setProduct] = useState(null);
+const SingleProductPage = () => {
+    const { id } = useParams();
+    const [data,setData]=useState([]);
+    let url=`https://course-api.com/react-store-single-product?id=${id}`
+    const fetchSingleProduct = async (url) => {
+      // dispatch({ type: GET_SINGLE_PRODUCT_BEGIN });
+      try {
+          const response = await axios.get(url);
+          const singleProduct = response.data;
+          console.log(singleProduct);
+          setData(singleProduct)
+          // dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: singleProduct });
+      } catch (error) {
+          // dispatch({ type: GET_SINGLE_PRODUCT_ERROR });
+      }
+  };
 
   useEffect(() => {
-    // Make an API call to fetch the product details using the provided productId
-    // Replace this with your actual API call
-    const fetchProduct = async () => {
-      try {
-        const response = await fetch(
-          `https://course-api.com/react-store-single-product?id=${id}`
-        );
-        const data = await response.json();
-        setProduct(data);
-        console.log(data);
-      } catch (error) {
-        console.error("Error fetching product:", error);
-      }
-    };
+    fetchSingleProduct(url);
+  }, []);
 
-    fetchProduct();
-  }, [id]);
+  const addtoCart=(product)=>{
+    axios.post(`http://localhost:8080/cart`,product)
+    .then((res)=>{
+        window.alert("Added");
+    })
+    .catch((err)=>{
+        window.alert("Already Added to Cart")
+        console.log(err);
+    })
 
-  if (!product) {
-    return <div>Loading...</div>;
-  }
+}
 
-  const {
-    stock,
-    price,
-    featured,
-    colors,
-    category,
-    images,
-    reviews,
-    stars,
-    name,
-    description,
-    company,
-  } = product;
-
-  return (
-    <div className={styles["product-page"]}>
-      <div className={styles["product-images"]}>
-        {images.map((image) => (
-          <img key={image.id} src={image.url} alt={image.filename} />
-        ))}
-      </div>
-      <div className={styles["product-details"]}>
-        <h2>{name}</h2>
-        <p>{description}</p>
-        <p>Price: ${price}</p>
-        <p>Stock: {stock}</p>
-        <p>Category: {category}</p>
-        <p>Company: {company}</p>
-        <p>Reviews: {reviews}</p>
-        <p>Rating: {stars} stars</p>
-        <ul>
-          {colors.map((color, index) => (
-            <li key={index} style={{ backgroundColor: color }}></li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
+    const {
+        name,
+        price,
+        description,
+        stock,
+        category,
+        colors,
+        reviews,
+        id: sku,
+        company,
+        shipping,
+        images,
+    } = data;
+    return (
+        <Wrapper style={{width:"90%",margin:"auto",margin:"30px"}}>
+            <PageHero title={name} category={category} product />
+            <div className="section section-center page">
+                <Link to="/product" className="btn">
+                    <Button colorScheme='yellow' >back to products</Button>
+                </Link>
+                <div className="product-center">
+                    <ProductImages images={images} />
+                    <section className="content" style={{marginTop:"-200px", padding:"30px"}}>
+                        <Heading>{name}</Heading>
+                        {/* <Stars stars={stars} reviews={reviews} /> */}
+                        <h5 className="price">RS. {price}</h5>
+                        <p className="desc">{description}</p><br/>
+                        <p className="info">
+                            <span>Available : </span>
+                            {stock > 0 ? `${stock} In stock` : "out of stock"}
+                        </p>
+                        <p className="info">
+                            <span>SKU :</span>
+                            {sku}
+                        </p>
+                        <p className="info">
+                            <span>Brand :</span>
+                            {company}
+                        </p>
+                        <p className="info">
+                            <span>Shipping :</span>
+                            {shipping?"Free Shipping" :"Applicable delivery Charge"}
+                        </p>
+                        <p className="info">
+                            <span>Reviews :</span>
+                            {reviews}
+                        </p>
+                        <p className="info">
+                            <span>Category :</span>
+                            {category}
+                        </p>
+                        <hr /><br/>
+                        {stock > 0 && <Button onClick={()=>addtoCart(data)} colorScheme='yellow' >Add to Cart</Button>}
+                    </section>
+                </div>
+            </div>
+        </Wrapper>
+    );
 };
 
-export default ProductDetails;
+const Wrapper = styled.main`
+    .product-center {
+        display: grid;
+        gap: 4rem;
+        margin-top: 2rem;
+    }
+    .price {
+        color: var(--clr-primary-5);
+    }
+    .desc {
+        line-height: 2;
+        max-width: 45em;
+    }
+    .info {
+        text-transform: capitalize;
+        width: 300px;
+        display: grid;
+        grid-template-columns: 125px 1fr;
+        span {
+            font-weight: 700;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .product-center {
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+        }
+        .price {
+            font-size: 1.25rem;
+        }
+    }
+`;
+
+export default SingleProductPage;
