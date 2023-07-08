@@ -1,17 +1,21 @@
 import { CloseIcon } from "@chakra-ui/icons";
 import { Button, Flex, Heading, Image, Text, Container, Box, HStack, Input, Progress } from "@chakra-ui/react";
-import React, { useState } from 'react';
-import { useParams, Link } from "react-router-dom";
+import React, { useContext, useState } from 'react';
+import {Link,useNavigate } from "react-router-dom";
+import DetailsContext from "./DetailsContext";
 
 export const Information = () => {
-  const { totalPrice } = useParams();
+  
   const [lastName, setLastName] = useState('');
   const [firstName, setFirstName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [email, setEmail] = useState('');
   const [promoCode, setPromoCode] = useState('');
+  const details=useContext(DetailsContext);
+  const totalPrice = details.totalPrice;
   const [discountedPrice, setDiscountedPrice] = useState(totalPrice);
   const [formErrors, setFormErrors] = useState({});
+  
 
   const handleApplyPromoCode = () => {
     if (promoCode === "SAVE50") {
@@ -56,14 +60,16 @@ export const Information = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(value);
   };
+  
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (validateForm()) {
       // Form is valid, submit or proceed to the next step
-      window.location.href = `/Delivery/${discountedPrice}`;
-      console.log('Form submitted!');
+      navigate("/Delivery/")
+      
       // Add your logic for form submission or navigation to the next step here
     } else {
       // Form is invalid, display error messages
@@ -71,16 +77,22 @@ export const Information = () => {
     }
   };
 
+
+
+  // setting all the details
+  details.name=firstName+" "+lastName
+  details.phone=phoneNumber;
+  details.discountedPrice=discountedPrice
+  details.email=email
   return (
-    <Container maxW="1100px" backgroundColor="#C4C4C4">
-      <Heading as="h1" textAlign="left" mt="6">
+    <Container maxW="1100px" >
+      <Heading as="h1" textAlign="left" mt='-25px' paddingBottom='10px'>
         Your Information
       </Heading>
-
       <form onSubmit={handleSubmit}>
-        <Flex justifyContent="space-between" mt="8" backgroundColor="white" paddingTop="60px" borderRadius="30px">
+        <Flex justifyContent="space-between" backgroundColor="white" paddingTop="60px" borderRadius="30px">
           {/* Left Side */}
-          <Box flex="1" mr="8" gap="8">
+          <Box flex="1" gap="8" ml='50px'>
             <Box mb="40px">
               <Input
                 id="lastName"
@@ -171,7 +183,7 @@ export const Information = () => {
             <Box>
               <Flex mt="auto" mb="4" justifyContent="space-between">
                 <Text fontSize="xl">Total Price</Text>
-                <Text fontWeight="bold" fontSize="3xl">${discountedPrice}</Text>
+                <Text fontWeight="bold" fontSize="3xl">₹ {discountedPrice}</Text>
               </Flex>
             </Box>
           </Box>
@@ -179,7 +191,7 @@ export const Information = () => {
         <Box display="flex" justifyContent="space-between" mt="30px">
           <Text>2/3</Text>
           <Progress value={67} colorScheme="orange" w="550px" size="xs" mt="20px" />
-          <Link to={`/Delivery/${discountedPrice}`}>
+          <Link to={`/Delivery/`}>
             <Button
               mb="20px"
               h="60px"
