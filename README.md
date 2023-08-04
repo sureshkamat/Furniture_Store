@@ -4,7 +4,7 @@
 
 https://www.behance.net/gallery/140172345/Furniture-Store-webdesign-e-commerce
 
-<h3>Description</h3>
+<h3>description</h3>
 <p></p>The goal of this project is to create a web application that replicates the core functionality and user experience of the popular e-commerce website Furniturestore.com. The clone is built using HTML, CSS, JavaScript, and a mock JSON server to simulate the backend.
 <p></p>
 <div>
@@ -25,4 +25,4 @@ https://www.behance.net/gallery/140172345/Furniture-Store-webdesign-e-commerce
 
 <h1>url:</h1>
 
-<h1>https://furniturestoremasai.netlify.app/</h1>
+<a href="https://furniturestoremasai.netlify.app/">project url</h1>
