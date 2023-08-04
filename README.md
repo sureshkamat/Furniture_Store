@@ -5,8 +5,8 @@
 https://www.behance.net/gallery/140172345/Furniture-Store-webdesign-e-commerce
 
 <h3>description</h3>
-<p></p>The goal of this project is to create a web application that replicates the core functionality and user experience of the popular e-commerce website Furniturestore.com. The clone is built using HTML, CSS, JavaScript, and a mock JSON server to simulate the backend.
-<p></p>
+<p>The goal of this project is to create a web application that replicates the core functionality and user experience of the popular e-commerce website Furniturestore.com. The clone is built using HTML, CSS, JavaScript, and a mock JSON server to simulate the backend.
+</p>
 <div>
 <h1>Project Contributors</h1>
 <h2>Name: Suresh kamat</h2>
